@@ -10,7 +10,7 @@ const logout: NextApiHandler = async (req, res) => {
         return res.status(401).json({ message: "User is not logged in" });
       const token = req.cookies.token;
 
-      const userId = await verifyToken(token);
+      const userId = (await verifyToken(token)) as string;
       removeTokenCookie(res);
       try {
         await magicAdmin.users.logoutByIssuer(userId);

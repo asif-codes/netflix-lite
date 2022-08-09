@@ -91,7 +91,7 @@ const Video: NextPage<VideoProps> = ({ video }) => {
     };
 
     fetchRating();
-  }, []);
+  }, [videoId]);
 
   const runRatingService = async (favourited: number) => {
     return await fetch("/api/stats", {

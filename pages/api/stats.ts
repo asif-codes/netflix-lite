@@ -25,7 +25,7 @@ const stats: NextApiHandler<ResData> = async (req, res) => {
       const { videoId } = inputParams;
 
       if (videoId) {
-        const userId = await verifyToken(token);
+        const userId = (await verifyToken(token)) as string;
         const findVideo = await findVideoIdByUser(token, userId, videoId);
         const doesStatsExists = findVideo?.length > 0;
 
